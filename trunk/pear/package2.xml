@@ -30,7 +30,7 @@
 		<release>${release.stability}</release>
 		<api>${api.stability}</api>
 	</stability>
-	<license uri="http://www.opensource.org/licenses/osl-3.0.php">OSL 3.0</license>
+	<license uri="http://www.gnu.org/licenses/gpl-3.0.txt">GPL 3</license>
 	<notes>
 		- Switching to Google Code for Project Hosting
 		- Switching from OSL 3.0 to GPL 3
@@ -64,7 +64,7 @@
 				<api>${api.stability}</api>
 			</stability>
 			<date>${actual.date}</date>
-			<license uri="http://www.opensource.org/licenses/osl-3.0.php">OSL 3.0</license>
+			<license uri="http://www.gnu.org/licenses/gpl-3.0.txt">GPL 3</license>
 			<notes>
 				- Switching to Google Code for Project Hosting
 				- Switching from OSL 3.0 to GPL 3
