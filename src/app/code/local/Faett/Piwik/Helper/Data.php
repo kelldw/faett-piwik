@@ -99,8 +99,6 @@ class Faett_Piwik_Helper_Data extends Mage_Adminhtml_Helper_Dashboard_Abstract
     	$service = Faett_Piwik_Service::create();
     	// load the live user data
 		$this->_collection = $service->call('VisitsSummary.get', $params);
-		
-		Mage::log(var_export($this->_collection, true));
     }
 
     /**
