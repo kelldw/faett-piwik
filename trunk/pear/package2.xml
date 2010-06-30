@@ -7,7 +7,7 @@
     http://pear.php.net/dtd/package-2.0
     http://pear.php.net/dtd/package-2.0.xsd">
 	<name>${ant.project.name}</name>
-	<channel>www.faett.net</channel>
+	<channel>connect.faett.net/community</channel>
 	<summary>Magento extension for tracking with Piwik</summary>
 	<description>
 		This extension provides functionality for tracking Magento with Piwik and
@@ -46,8 +46,8 @@
 			</pearinstaller>
 			<package>
 				<name>Faett_Manager</name>
-				<channel>www.faett.net</channel>
-				<min>0.1.12</min>
+				<channel>connect.faett.net/community</channel>
+				<min>0.1.13</min>
 			</package>
 		</required>
 	</dependencies>
@@ -63,6 +63,21 @@
 				<api>${api.stability}</api>
 			</stability>
 			<date>${actual.date}</date>
+			<license uri="http://www.gnu.org/licenses/gpl-3.0.txt">GPL 3</license>
+			<notes>
+				- Switching to new channel structure connect.faett.net/community
+			</notes>
+		</release>
+		<release>
+			<version>
+				<release>0.1.7</release>
+				<api>0.1.3</api>
+			</version>
+			<stability>
+				<release>beta</release>
+				<api>beta</api>
+			</stability>
+			<date>2010-06-06</date>
 			<license uri="http://www.gnu.org/licenses/gpl-3.0.txt">GPL 3</license>
 			<notes>
 				- Removing log messages for beta tests
