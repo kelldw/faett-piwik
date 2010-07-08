@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<layout>
+	<adminhtml_dashboard_index>
+        <reference name="content">
+        	<block type="core/template" name="piwik_tab" template="piwik/tab.phtml">
+				<block type="piwik/adminhtml_dashboard_tab_tracking" name="dashboard_tab_tracking" />
+        	</block>
+        </reference>
+    </adminhtml_dashboard_index>
+</layout>

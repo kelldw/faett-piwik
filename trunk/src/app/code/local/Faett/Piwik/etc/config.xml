@@ -36,11 +36,11 @@
             <piwik>
             	<class>Faett_Piwik_Block</class>
             </piwik>
-            <adminhtml>
-		        <rewrite>
-		            <dashboard_diagrams>Faett_Piwik_Block_Adminhtml_Dashboard_Diagrams</dashboard_diagrams>
-		        </rewrite>
-		    </adminhtml>
+<!--            <adminhtml>-->
+<!--		        <rewrite>-->
+<!--		            <dashboard_diagrams>Faett_Piwik_Block_Adminhtml_Dashboard_Diagrams</dashboard_diagrams>-->
+<!--		        </rewrite>-->
+<!--		    </adminhtml>-->
             <adminhtml>
 		        <rewrite>
 		            <dashboard_grids>Faett_Piwik_Block_Adminhtml_Dashboard_Grids</dashboard_grids>
@@ -159,5 +159,12 @@
                 </Faett_Piwik>
             </modules>
         </translate>
+        <layout>
+			<updates>
+				<vendor>
+					<file>piwik.xml</file>
+				</vendor>
+			</updates>
+		</layout>
     </adminhtml>
 </config>
