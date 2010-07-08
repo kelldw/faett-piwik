@@ -14,14 +14,14 @@
 
 <script type="text/javascript">
 
-Event.observe(window, 'load', function() {
-	$('diagram_tab').insert($('piwik_tab').innerHTML);
-	$('diagram_tab_content'). insert($('piwik_content').innerHTML);
-	
-	// reinitialize diagram_tab
-    diagram_tabJsTabs.initialize('diagram_tab', 'diagram_tab_content');
-    $('diagram_tab_orders').addClassName('active');
-    $('diagram_tab_orders_content').show();
-})
+// adding tracking tab button to diagram_tab container
+$('diagram_tab').insert($('piwik_tab').innerHTML);
+// adding tracking tab content to diagram_tab_content container
+$('diagram_tab_content'). insert($('piwik_content').innerHTML);
+// reinitialize diagram_tab
+diagram_tabJsTabs.initialize('diagram_tab', 'diagram_tab_content');
+// reactivate orders tab and show orders_content
+$('diagram_tab_orders').addClassName('active');
+$('diagram_tab_orders_content').show();
 
 </script>
