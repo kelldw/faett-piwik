@@ -58,19 +58,30 @@ class Faett_Piwik_Decoder_Json_Live
 	 */
 	public function getLastVisits(array $params)
 	{
-		// load the data and decode it
-		$phpNative = $this->decode($params);
-    	// initialize the collection
-    	foreach ($phpNative as $date => $values) {
-    		// initialize an empty object
-    		$obj = new Varien_Object();
-    		// pass the data
-    		if (is_array($values)) {
-    			$obj->addData($values);
-    		}
-	    	// add the object to the collection
-    		$this->_collection->addItem($obj);
-    	}
+	    try {
+    		// load the data and decode it
+    		$phpNative = $this->decode($params);
+        	// initialize the collection
+        	foreach ($phpNative as $date => $values) {
+        		// initialize an empty object
+        		$obj = new Varien_Object();
+        		// pass the data
+        		if (is_array($values)) {
+        			$obj->addData($values);
+        		}
+    	    	// add the object to the collection
+        		$this->_collection->addItem($obj);
+        	}
+	    } catch(Exception $e) {
+	        // log the exception
+	        Mage::logException($e);
+            // add an error to the session
+        	Mage::getSingleton('adminhtml/session')->addError(
+        	    Mage::helper('piwik')->__(
+        	    	'900.error.invalid.piwik-configuration'
+        	    )
+        	);
+	    }
     	// return the collection
     	return $this->_collection;
 	}

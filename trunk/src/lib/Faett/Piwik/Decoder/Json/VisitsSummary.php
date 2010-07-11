@@ -58,24 +58,35 @@ class Faett_Piwik_Decoder_Json_VisitsSummary
 	 */
 	public function get(array $params)
 	{
-		// load the data and decode it
-		$phpNative = $this->decode($params);
-		// initialize the collection
-    	foreach ($phpNative as $date => $values) {
-    		// pass the data
-    		if (is_array($values)) {
-    			// check if a value for the unique visitors exists
-    			if (array_key_exists('nb_uniq_visitors', $values)) {
-		    		// if yes, initialize an empty object
-		    		$obj = new Varien_Object();
-    				$obj->addData($values);
-    				$obj->setUsers($values['nb_uniq_visitors']);
-    				$obj->setRange($date);
-			    	// add the object to the collection
-		    		$this->_collection->addItem($obj);
-    			}	
-    		}
-    	}
+	    try {
+    		// load the data and decode it
+    		$phpNative = $this->decode($params);
+    		// initialize the collection
+        	foreach ($phpNative as $date => $values) {
+        		// pass the data
+        		if (is_array($values)) {
+        			// check if a value for the unique visitors exists
+        			if (array_key_exists('nb_uniq_visitors', $values)) {
+    		    		// if yes, initialize an empty object
+    		    		$obj = new Varien_Object();
+        				$obj->addData($values);
+        				$obj->setUsers($values['nb_uniq_visitors']);
+        				$obj->setRange($date);
+    			    	// add the object to the collection
+    		    		$this->_collection->addItem($obj);
+        			}	
+        		}
+        	}
+	    } catch(Exception $e) {
+	        // log the exception
+	        Mage::logException($e);
+            // add an error to the session
+        	Mage::getSingleton('adminhtml/session')->addError(
+        	    Mage::helper('piwik')->__(
+        	    	'900.error.invalid.piwik-configuration'
+        	    )
+        	);
+	    }
     	// return the collection
     	return $this->_collection;
 	}
