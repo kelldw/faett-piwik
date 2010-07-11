@@ -78,14 +78,45 @@ class Faett_Piwik_Adminhtml_DashboardController
             Mage::logException($ile);
             // add an error to the session
         	Mage::getSingleton('adminhtml/session')->addError(
-        	    Mage::helper('manager')->__('Please enter a valid serial number')
+        	    Mage::helper('piwik')->__(
+        	    	'100.error.invalid.serialz',
+        	    	$packageInformation->getIdentifier()
+        	    )
+        	); 
+        } catch(Faett_Manager_Exceptions_ChannelLoginException $cle) {
+            // log the exception
+            Mage::logException($cle);
+            // add an error to the session
+        	Mage::getSingleton('adminhtml/session')->addError(
+        	    Mage::helper('piwik')->__(
+        	    	'100.error.invalid.credentials',
+        	    	$packageInformation
+        	    	    ->getPackage()
+        	    	    ->getChannel()
+        	    	    ->getUrl()
+        	    )
         	);
+            // redirect and request user to enter a valid Serialz
+            $this->_forward(
+            	'index', 
+            	'adminhtml_channel', 
+            	'manager', 
+            	array(
+			    	'id' => $packageInformation->getPackage()->getId()
+			    )
+            );
         } catch(Faett_Manager_Exceptions_ChannelNotFoundException $cnfe) {
             // log the exception
             Mage::logException($cnfe);
             // add an error to the session
         	Mage::getSingleton('adminhtml/session')->addError(
-        	    Mage::helper('manager')->__($cnfe->getMessage())
+        	    Mage::helper('piwik')->__(
+        	        '100.error.invalid.channel',
+        	    	$packageInformation
+        	    	    ->getPackage()
+        	    	    ->getChannel()
+        	    	    ->getUrl()
+        	    )
         	);
             // redirect and request user to register channel first
             $this->_forward(

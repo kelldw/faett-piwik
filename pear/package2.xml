@@ -32,7 +32,8 @@
 	</stability>
 	<license uri="http://www.gnu.org/licenses/gpl-3.0.txt">GPL 3</license>
 	<notes>
-		- Removing log messages for beta tests
+		- Implementing new Extension validation
+		- Changing TAB creation from overwriting a block to a JavaScript solution
 	</notes>
 	<contents/>
 	<dependencies>
@@ -47,7 +48,7 @@
 			<package>
 				<name>Faett_Manager</name>
 				<channel>connect.faett.net/community</channel>
-				<min>0.1.13</min>
+				<min>0.1.16</min>
 			</package>
 		</required>
 	</dependencies>
@@ -63,6 +64,22 @@
 				<api>${api.stability}</api>
 			</stability>
 			<date>${actual.date}</date>
+			<license uri="http://www.gnu.org/licenses/gpl-3.0.txt">GPL 3</license>
+			<notes>
+				- Implementing new Extension validation
+				- Changing TAB creation from overwriting a block to a JavaScript solution
+			</notes>
+		</release>
+		<release>
+			<version>
+				<release>0.1.8</release>
+				<api>0.1.3</api>
+			</version>
+			<stability>
+				<release>beta</release>
+				<api>beta</api>
+			</stability>
+			<date>2010-06-06</date>
 			<license uri="http://www.gnu.org/licenses/gpl-3.0.txt">GPL 3</license>
 			<notes>
 				- Switching to new channel structure connect.faett.net/community
