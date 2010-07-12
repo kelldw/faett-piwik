@@ -2,6 +2,80 @@ This is the Change Log for PHPlot.
 The project home page is http://sourceforge.net/projects/phplot/
 -----------------------------------------------------------------------------
 
+2010-06-29 (lbayuk)     ===== Released as 5.1.2 =====
+    * phplot.php: Updated version
+    * README.txt: Updated for new release
+    * NEWS.txt: Add text for new release
+
+2010-06-26
+   * Feature request 2885930 "Horizontal Bars":
+     Horizontal bar charts are implemented, as an experimental feature.
+     A new data type 'text-data-yx' was added, which works with
+     'bars' plot type to produce a horizontal bar chart from a data
+     array with X values for each Y value. Changes were made to
+     FindDataLimits, CalcMargins, CalcPlotAreaWorld, CalcBarWidths,
+     and CalcMaxDataLabelSize to handle the new data type. Other
+     changes were made to handle label position defaults and grid
+     defaults. New drawing functions were added for horizontal bars.
+
+   * HorizontalBars.txt: new documentation file for experimental feature.
+   * Makefile: List new documentation file.
+
+2010-06-25
+   * Each plot-type drawing function now checks that it is getting a data
+     type that it knows how to handle. A new internal function unifies the
+     checking and error message. (This is associated with an upcoming,
+     bigger change.)
+
+     Compatibility: If you were using an invalid data type for a plot type
+     whose function did not check, will now get an error.
+     
+   * Removed some dubious code from DrawLines() and DrawSquared() and
+     rewrote comments there. The code initialized lastx[0] and lasty[0],
+     but lasty was mapped using the X (rather than Y) function.  This was
+     obviously wrong, but closer inspection showed that the values were
+     never, used so the code was removed.
+
+2010-06-13
+   * Truecolor.txt: removed
+   * Makefile, README.txt: Removed reference to Truecolor.txt. Full
+     documentation for truecolor images is now in the Reference Manual.
+     
+2010-06-02
+   * Fix bug 3010116 "Bad rendering of title in multi-plot image
+     when using TTF":
+     Make sure the main title is drawn only once. (If drawn multiple
+     times with TrueType font text, the anti-aliasing effects result
+     in poor quality text.)
+
+2010-05-31
+   * Improvements to truecolor support (from feature request 2947679):
+     Truecolor support is now better integrated. The derived class only
+     has the constructor now, and the base class itself provides the alpha
+     color component support through the internal functions SetIndexColor(),
+     SetIndexDarkColor(), and SetRGBColor(). This means alpha channel
+     works with palette images too (in so far as GD supports this).
+
+   * Truecolor.txt: Updated per changes to truecolor support.
+
+   * Image tiling with mode 'scale' in tile_img(), used with image and
+     plot area backgrounds, now uses imagecopyresampled() rather than
+     imagecopyresized(). They are the same with palette images, but the
+     resampled copy gets better results with truecolor images.
+
+2010-05-29
+    * Feature request 3002606 "Add to plot and image border options":
+        Added options 'right', 'top', and 'bottom' to SetPlotBorderType()
+      (existing options are 'left', 'sides', 'none', and 'full'). This
+      now also accepts an array of the above options, giving complete
+      control over which sides to draw.
+        Added option 'solid' to SetImageBorderType() to use the actual
+      color set with SetImageBorderColor(), rather than the darker
+      shade as type 'plain' does (for some reason).
+        New function SetImageBorderWidth() sets the width of the image
+      border. The image border width is now accounted for in margin
+      calculations, although existing plots will not change.
+
 2010-04-04 (lbayuk)     ===== Released as 5.1.1 =====
     * phplot.php: Updated version
     * README.txt: Updated for new release

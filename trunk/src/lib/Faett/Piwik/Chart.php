@@ -80,7 +80,7 @@ class Faett_Piwik_Chart extends PHPlot_TrueColor
 		$this->SetLineWidths(2);
 		$this->SetDrawPlotAreaBackground(true);
 		$this->SetDataType('data-data');
-		$this->SetPlotBorderType('left');
+		$this->SetPlotBorderType(array('left', 'bottom'));
 		$this->SetDrawDashedGrid(false);
 		$this->SetTextColor('#999999');
 		// set the callback for rendering the lines, because

@@ -25,7 +25,7 @@
 <config>
     <modules>
         <Faett_Piwik>
-            <version>0.1.0</version>
+            <version>${version}</version>
         </Faett_Piwik>
     </modules>
     <global>
@@ -36,11 +36,6 @@
             <piwik>
             	<class>Faett_Piwik_Block</class>
             </piwik>
-            <adminhtml>
-		        <rewrite>
-		            <dashboard_grids>Faett_Piwik_Block_Adminhtml_Dashboard_Grids</dashboard_grids>
-		        </rewrite>
-		    </adminhtml>
             <adminhtml>
 		        <rewrite>
 		            <dashboard_tab_amounts>Faett_Piwik_Block_Adminhtml_Dashboard_Tab_Amounts</dashboard_tab_amounts>

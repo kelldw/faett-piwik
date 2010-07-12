@@ -34,6 +34,7 @@
 	<notes>
 		- Implementing new Extension validation
 		- Changing TAB creation from overwriting a block to a JavaScript solution
+		- Switching to new PHPLot version 5.1.2 for rendering bottom line in diagrams
 	</notes>
 	<contents/>
 	<dependencies>
@@ -68,6 +69,7 @@
 			<notes>
 				- Implementing new Extension validation
 				- Changing TAB creation from overwriting a block to a JavaScript solution
+				- Switching to new PHPLot version 5.1.2 for rendering bottom line in diagrams
 			</notes>
 		</release>
 		<release>
@@ -79,7 +81,7 @@
 				<release>beta</release>
 				<api>beta</api>
 			</stability>
-			<date>2010-06-06</date>
+			<date>2010-07-01</date>
 			<license uri="http://www.gnu.org/licenses/gpl-3.0.txt">GPL 3</license>
 			<notes>
 				- Switching to new channel structure connect.faett.net/community
