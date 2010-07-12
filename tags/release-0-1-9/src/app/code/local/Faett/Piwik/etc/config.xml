@@ -1,0 +1,160 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Faett_Piwik
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Faett_Piwik to newer
+ * versions in the future. If you wish to customize Faett_Piwik for your
+ * needs please refer to http://www.faett.net for more information.
+ *
+ * @category   Faett
+ * @package    Faett_Piwik
+ * @copyright  Copyright (c) 2009 <wagner_tim78@hotmail.com> Tim Wagner
+ * @license    http://opensource.org/licenses/osl-3.0.php
+ * 			   Open Software License (OSL 3.0)
+ */
+-->
+<config>
+    <modules>
+        <Faett_Piwik>
+            <version>${version}</version>
+        </Faett_Piwik>
+    </modules>
+    <global>
+        <models>
+            <piwik><class>Faett_Piwik_Model</class></piwik>
+        </models>
+        <blocks>
+            <piwik>
+            	<class>Faett_Piwik_Block</class>
+            </piwik>
+            <adminhtml>
+		        <rewrite>
+		            <dashboard_tab_amounts>Faett_Piwik_Block_Adminhtml_Dashboard_Tab_Amounts</dashboard_tab_amounts>
+		        </rewrite>
+		    </adminhtml>
+            <adminhtml>
+		        <rewrite>
+		            <dashboard_tab_orders>Faett_Piwik_Block_Adminhtml_Dashboard_Tab_Orders</dashboard_tab_orders>
+		        </rewrite>
+		    </adminhtml>
+        </blocks>
+        <helpers>
+            <piwik>
+                <class>Faett_Piwik_Helper</class>
+            </piwik>
+        </helpers>
+        <resources>
+            <piwik_setup>
+                <setup>
+                    <module>Faett_Piwik</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </piwik_setup>
+            <piwik_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </piwik_write>
+            <piwik_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </piwik_read>
+        </resources>
+		<rewrite>
+			<piwikadmin>
+				<from>#^/admin/dashboard/#</from>
+				<to>/piwik/adminhtml_dashboard/</to>
+			</piwikadmin>
+		</rewrite>
+    </global>
+    <frontend>
+        <translate>
+            <modules>
+                <Faett_Piwik>
+                    <files>
+                        <default>Faett_Piwik.csv</default>
+                    </files>
+                </Faett_Piwik>
+            </modules>
+        </translate>
+        <events>
+            <checkout_onepage_controller_success_action>
+                <observers>
+                    <piwik_order_success>
+                        <type>singleton</type>
+                        <class>piwik/observer</class>
+                        <method>orderSuccessPageView</method>
+                    </piwik_order_success>
+                </observers>
+            </checkout_onepage_controller_success_action>
+        </events>
+        <layout>
+            <updates>
+                <piwik>
+                    <file>piwik.xml</file>
+                </piwik>
+            </updates>
+        </layout>
+    </frontend>
+    <admin>
+        <routers>
+			<piwik>
+				<use>admin</use>
+				<args>
+					<module>Faett_Piwik</module>
+					<frontName>piwik</frontName>
+				</args>
+			</piwik>
+        </routers>
+    </admin>
+    <adminhtml>
+		<acl>
+			<resources>
+				<admin>
+					<children>
+						<system>
+							<children>
+								<config>
+									<children>
+										<piwik translate="title" module="piwik">
+											<title>Piwik</title>
+											<sort_order>10</sort_order>
+										</piwik>
+									</children>
+								</config>
+							</children>
+						</system>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+        <translate>
+            <modules>
+                <Faett_Piwik>
+                    <files>
+                        <default>Faett_Piwik.csv</default>
+                    </files>
+                </Faett_Piwik>
+            </modules>
+        </translate>
+        <layout>
+			<updates>
+				<vendor>
+					<file>piwik.xml</file>
+				</vendor>
+			</updates>
+		</layout>
+    </adminhtml>
+</config>
