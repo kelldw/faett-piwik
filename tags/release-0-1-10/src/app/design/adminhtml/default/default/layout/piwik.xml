@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<layout>
+	<adminhtml_dashboard_index>
+        <reference name="content">
+        	<block type="core/template" name="piwik_tab" template="piwik/tab.phtml">
+				<block type="piwik/adminhtml_dashboard_tab_tracking" name="dashboard_tab_tracking" />
+        	</block>
+        	<block type="core/template" name="piwik_live_user_tab" template="piwik/live/user/tab.phtml">
+				<block type="piwik/adminhtml_dashboard_tab_live_user" name="dashboard_tab_live_user" />
+        	</block>
+        </reference>
+    </adminhtml_dashboard_index>
+</layout>
