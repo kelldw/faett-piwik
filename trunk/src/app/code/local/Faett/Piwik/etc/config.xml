@@ -72,12 +72,6 @@
                 </connection>
             </piwik_read>
         </resources>
-		<rewrite>
-			<piwikadmin>
-				<from>#^/admin/dashboard/#</from>
-				<to>/piwik/adminhtml_dashboard/</to>
-			</piwikadmin>
-		</rewrite>
     </global>
     <frontend>
         <translate>

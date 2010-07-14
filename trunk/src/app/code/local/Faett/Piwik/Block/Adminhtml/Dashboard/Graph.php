@@ -130,7 +130,7 @@ class Faett_Piwik_Block_Adminhtml_Dashboard_Graph
             $gaData = urlencode(base64_encode(serialize($params)));
             $gaHash = Mage::helper('piwik')->getChartDataHash($gaData);
             $params = array('ga' => $gaData, 'h' => $gaHash);
-            return $this->getUrl('*/*/tunnel', array('_query' => $params));
+            return $this->getUrl('piwik/adminhtml_dashboard/tunnel', array('_query' => $params));
         }
     }
 
