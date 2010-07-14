@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Faett_Piwik
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Faett_Piwik to newer
+ * versions in the future. If you wish to customize Faett_Piwik for your
+ * needs please refer to http://www.faett.net for more information.
+ *
+ * @category   Faett
+ * @package    Faett_Piwik
+ * @copyright  Copyright (c) 2009 <wagner_tim78@hotmail.com> Tim Wagner
+ * @license    http://opensource.org/licenses/osl-3.0.php
+ * 			   Open Software License (OSL 3.0)
+ */
+-->
+<config>
+   <sections>
+        <piwik translate="label" module="piwik">
+            <label>Piwik</label>
+            <tab>faett</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>1</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <piwik_chart translate="label" module="piwik">
+                    <label>900.piwik.system.label.group.chart</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                	<fields>
+                        <token translate="label">
+                            <label>900.piwik.system.label.token</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>34</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </token>
+                        <google translate="label">
+                            <label>900.piwik.system.label.use-google</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>35</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </google>
+                        <ttf translate="label">
+                            <label>900.piwik.system.label.use-ttf</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>36</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </ttf>
+                	</fields>
+                </piwik_chart>
+                <piwik translate="label" module="piwik">
+                    <label>900.piwik.system.label.group</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <active translate="label">
+                            <label>900.piwik.system.label.enable</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>31</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+                        <account translate="label">
+                            <label>900.piwik.system.label.account-number</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>32</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </account>
+                        <url translate="label">
+                            <label>900.piwik.system.label.piwik-url</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>33</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Without http://, e. g. www.faett.net/piwik/</comment>
+                        </url>
+                    </fields>
+                </piwik>
+          	</groups>
+       </piwik>
+   </sections>
+</config>
