@@ -27,7 +27,7 @@ $('diagram_tab_orders_content').show();
 function changeTrackingPeriod(periodObj) {
     periodParam = periodObj.value ? 'period/' + periodObj.value + '/' : '';
     ajaxBlockParam = 'block/tab_tracking/';
-    ajaxBlockUrl = '<?php echo $this->getUrl('*/*/ajaxBlock', array('_current' => true, 'block' => '', 'period' => '')) ?>' + ajaxBlockParam + periodParam;
+    ajaxBlockUrl = '<?php echo $this->getUrl('piwik/adminhtml_dashboard/ajaxBlock', array('_current' => true, 'block' => '', 'period' => '')) ?>' + ajaxBlockParam + periodParam;
     new Ajax.Request(ajaxBlockUrl, {
         parameters: {isAjax: 'true', form_key: FORM_KEY},
         onSuccess: function(transport) {

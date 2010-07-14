@@ -32,7 +32,7 @@
 	</stability>
 	<license uri="http://www.gnu.org/licenses/gpl-3.0.txt">GPL 3</license>
 	<notes>
-		- Bugfixing invalid period selection in tracking TAB
+		- Removing rewrite of Mage_Adminhtml_DashboardController
 	</notes>
 	<contents/>
 	<dependencies>
@@ -63,6 +63,21 @@
 				<api>${api.stability}</api>
 			</stability>
 			<date>${actual.date}</date>
+			<license uri="http://www.gnu.org/licenses/gpl-3.0.txt">GPL 3</license>
+			<notes>
+				- Removing rewrite of Mage_Adminhtml_DashboardController
+			</notes>
+		</release>
+		<release>
+			<version>
+				<release>0.1.10</release>
+				<api>0.1.3</api>
+			</version>
+			<stability>
+				<release>beta</release>
+				<api>beta</api>
+			</stability>
+			<date>2010-07-14</date>
 			<license uri="http://www.gnu.org/licenses/gpl-3.0.txt">GPL 3</license>
 			<notes>
 				- Bugfixing invalid period selection in tracking TAB

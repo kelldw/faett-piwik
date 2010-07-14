@@ -32,6 +32,7 @@
  */
 
 require_once 'Mage/Adminhtml/controllers/DashboardController.php';
+require_once 'Faett/Manager/controllers/Adminhtml/AbstractController.php';
 
 /**
  * Controller for the admin Dashboard.
@@ -43,89 +44,14 @@ require_once 'Mage/Adminhtml/controllers/DashboardController.php';
  * 				GNU General Public License (GPL 3)
  * @author      Tim Wagner <tw@faett.net>
  */
-class Faett_Piwik_Adminhtml_DashboardController 
-	extends Mage_Adminhtml_DashboardController {
+class Faett_Piwik_Adminhtml_DashboardController  
+	extends Faett_Manager_Adminhtml_AbstractController {
 
 	/**
 	 * The idenitifier for handling the serialz
 	 * @var string
 	 */
     protected $_identifier = 'faett/Faett_Piwik';
-
-    /**
-     * Method is called by the controller before the requested action is
-     * invoked.
-     *
-     * This method checks if a valid licence for the package is available,
-     * if not the user is redirected to the package detail page to enter
-     * a valid serialz.
-     *
-     * @return Mage_Core_Controller_Front_Action The controller instance
-     */
-    public function preDispatch()
-    {
-        try {
-            // invoke the parent's preDispatch method
-            parent::preDispatch();
-            // validate the package information
-            Mage::getModel('manager/connector')->validate(
-                $packageInformation = $this->_getPackageInformation()
-            );
-            // return the instance
-            return $this;
-        } catch(Faett_Manager_Exceptions_InvalidLicenceException $ile) {
-            // log the exception
-            Mage::logException($ile);
-            // add an error to the session
-        	Mage::getSingleton('adminhtml/session')->addError(
-        	    Mage::helper('piwik')->__(
-        	    	'100.error.invalid.serialz',
-        	    	$packageInformation->getIdentifier()
-        	    )
-        	); 
-        } catch(Faett_Manager_Exceptions_ChannelLoginException $cle) {
-            // log the exception
-            Mage::logException($cle);
-            // add an error to the session
-        	Mage::getSingleton('adminhtml/session')->addError(
-        	    Mage::helper('piwik')->__(
-        	    	'100.error.invalid.credentials',
-        	    	$packageInformation
-        	    	    ->getPackage()
-        	    	    ->getChannel()
-        	    	    ->getUrl()
-        	    )
-        	);
-            // redirect and request user to enter a valid Serialz
-            $this->_forward(
-            	'index', 
-            	'adminhtml_channel', 
-            	'manager', 
-            	array(
-			    	'id' => $packageInformation->getPackage()->getId()
-			    )
-            );
-        } catch(Faett_Manager_Exceptions_ChannelNotFoundException $cnfe) {
-            // log the exception
-            Mage::logException($cnfe);
-            // add an error to the session
-        	Mage::getSingleton('adminhtml/session')->addError(
-        	    Mage::helper('piwik')->__(
-        	        '100.error.invalid.channel',
-        	    	$packageInformation
-        	    	    ->getPackage()
-        	    	    ->getChannel()
-        	    	    ->getUrl()
-        	    )
-        	);
-            // redirect and request user to register channel first
-            $this->_forward(
-            	'new', 
-            	'adminhtml_channel', 
-            	'manager'
-            );
-        }
-    }
 
 	/**
 	 * Returns the unique package identifier containing
@@ -158,7 +84,13 @@ class Faett_Piwik_Adminhtml_DashboardController
     {
     	// check if google chart API should be used or internal chart library
     	if (Mage::getStoreConfig('piwik/piwik_chart/google')) {
-    		parent::tunnelAction();
+    		// initialize the original DashboardController
+    	    $dashboardController = new Mage_Adminhtml_DashboardController(
+    	        $this->_request, 
+    	        $this->_response
+    	    );
+    	    // call the original method
+    	    $dashboardController->tunnelAction();
     	} else {
 	        $gaData = $this->getRequest()->getParam('ga');
 	        $gaHash = $this->getRequest()->getParam('h');
