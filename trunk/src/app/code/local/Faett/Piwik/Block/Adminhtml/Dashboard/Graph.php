@@ -44,28 +44,6 @@
 class Faett_Piwik_Block_Adminhtml_Dashboard_Graph 
 	extends Mage_Adminhtml_Block_Dashboard_Graph {
 
-	/**
-	 * Initialize the Block with the path to the
-	 * template to use.
-	 * 
-	 *  @return void
-	 */
-    public function __construct()
-    {
-        parent::__construct();
-        $this->setTemplate('piwik/dashboard/graph.phtml');
-    }
-
-    /**
-     * Returns the path to the template to use.
-     * 
-     * @return string The path to the template
-     */
-    protected function _getTabTemplate()
-    {
-        return 'piwik/dashboard/graph.phtml';
-    }
-
     /**
      * (non-PHPdoc)
      * @see app/code/core/Mage/Adminhtml/Block/Dashboard/Mage_Adminhtml_Block_Dashboard_Graph#getChartUrl($directUrl = true)
