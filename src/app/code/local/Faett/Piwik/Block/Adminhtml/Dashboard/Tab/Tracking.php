@@ -43,16 +43,28 @@
  */
 class Faett_Piwik_Block_Adminhtml_Dashboard_Tab_Tracking 
 	extends Faett_Piwik_Block_Adminhtml_Dashboard_Graph {
-	
+
 	/**
-	 * Constructor to initialize the tracking tab.
+	 * Initialize the Block with the path to the
+	 * template to use.
 	 * 
-	 * @return void
+	 *  @return void
 	 */
     public function __construct()
-    {
+    {     
         $this->setHtmlId('tracking');
         parent::__construct();
+        $this->setTemplate('piwik/dashboard/graph.phtml');
+    }
+
+    /**
+     * Returns the path to the template to use.
+     * 
+     * @return string The path to the template
+     */
+    protected function _getTabTemplate()
+    {
+        return 'piwik/dashboard/graph.phtml';
     }
     
     /**
@@ -75,6 +87,9 @@ class Faett_Piwik_Block_Adminhtml_Dashboard_Tab_Tracking
     {
     	// set the helper for loading the data
         $this->setDataHelperName('piwik');
+        
+        Mage::log('Found period: '. $this->getRequest()->getParam('period'));
+        
         // set the params
         $this->getDataHelper()->setParam('store', $this->getRequest()->getParam('store'));
         $this->getDataHelper()->setParam('website', $this->getRequest()->getParam('website'));
