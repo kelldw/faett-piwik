@@ -1,0 +1,59 @@
+<?php if ($this->isActive()) { ?><div id="piwik_tab" style="display:none;">
+	<li>
+		<a class="tab-item-link" title="Tracking" id="diagram_tab_tracking" href="#">
+			<span>
+				<span title="The information in this tab has been changed." class="changed"></span>
+				<span title="This tab contains invalid data. Please solve the problem before saving." class="error"></span>
+				Tracking
+			</span>
+		</a>        
+	</li>
+</div>
+
+<div id="piwik_content" style="display:none;">
+	<div id="diagram_tab_tracking_content">
+		<?php echo $this->getChildHtml(); ?>
+	</div>
+</div>
+
+<script type="text/javascript">
+
+// adding tracking tab button to diagram_tab container
+$('diagram_tab').insert($('piwik_tab').innerHTML);
+// adding tracking tab content to diagram_tab_content container
+$('diagram_tab_content'). insert($('piwik_content').innerHTML);
+// reinitialize diagram_tab
+diagram_tabJsTabs.initialize('diagram_tab', 'diagram_tab_content');
+// reactivate orders tab and show orders_content
+$('diagram_tab_orders').addClassName('active');
+$('diagram_tab_orders_content').show();
+           
+function changeTrackingPeriod(periodObj) {
+    periodParam = periodObj.value ? 'period/' + periodObj.value + '/' : '';
+    ajaxBlockParam = 'block/tab_tracking/';
+    ajaxBlockUrl = '<?php echo $this->getUrl('piwik/adminhtml_dashboard/ajaxBlock', array('_current' => true, 'block' => '', 'period' => '')) ?>' + ajaxBlockParam + periodParam;
+    new Ajax.Request(ajaxBlockUrl, {
+        parameters: {isAjax: 'true', form_key: FORM_KEY},
+        onSuccess: function(transport) {
+            tabContentElementId = 'diagram_tab_tracking_content';
+            try {
+                if (transport.responseText.isJSON()) {
+                    var response = transport.responseText.evalJSON()
+                    if (response.error) {
+                        alert(response.message);
+                    }
+                    if(response.ajaxExpired && response.ajaxRedirect) {
+                        setLocation(response.ajaxRedirect);
+                    }
+                } else {
+                    $(tabContentElementId).update(transport.responseText);
+                }
+            }
+            catch (e) {
+                $(tabContentElementId).update(transport.responseText);
+            }
+        }
+    });
+}
+
+</script><?php } ?>
