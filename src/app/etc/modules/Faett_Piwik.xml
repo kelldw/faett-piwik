@@ -27,9 +27,6 @@
         <Faett_Piwik>
             <active>true</active>
             <codePool>local</codePool>
-            <depends>
-                <Faett_Manager />
-            </depends>
         </Faett_Piwik>
     </modules>
 </config> 

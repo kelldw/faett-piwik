@@ -1,0 +1,31 @@
+<?php if ($this->isActive()) { ?><div id="piwik_liveuser_tab" style="display:none;">
+	<li>
+		<a class="tab-item-link" title="Tracking" id="grid_tab_tracking" href="#">
+			<span>
+				<span title="The information in this tab has been changed." class="changed"></span>
+				<span title="This tab contains invalid data. Please solve the problem before saving." class="error"></span>
+				Tracking
+			</span>
+		</a>        
+	</li>
+</div>
+
+<div id="piwik_liveuser_content" style="display:none;">
+	<div id="grid_tab_tracking_content">
+		<?php echo $this->getChildHtml(); ?>
+	</div>
+</div>
+
+<script type="text/javascript">
+
+// add live user tab button to grid_tab container
+$('grid_tab').insert($('piwik_liveuser_tab').innerHTML);
+// adding tracking tab content to diagram_tab_content container
+$('grid_tab_content'). insert($('piwik_liveuser_content').innerHTML);
+// reinitialize diagram_tab
+grid_tabJsTabs.initialize('grid_tab', 'grid_tab_content');
+// reactivate reviewed products tab and show reviewed_products_content
+$('grid_tab_reviewed_products').addClassName('active');
+$('grid_tab_reviewed_products_content').show();
+
+</script><?php } ?>

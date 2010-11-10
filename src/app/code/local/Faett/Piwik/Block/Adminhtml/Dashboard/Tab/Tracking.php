@@ -87,16 +87,13 @@ class Faett_Piwik_Block_Adminhtml_Dashboard_Tab_Tracking
     {
     	// set the helper for loading the data
         $this->setDataHelperName('piwik');
-        
-        Mage::log('Found period: '. $this->getRequest()->getParam('period'));
-        
         // set the params
         $this->getDataHelper()->setParam('store', $this->getRequest()->getParam('store'));
         $this->getDataHelper()->setParam('website', $this->getRequest()->getParam('website'));
         $this->getDataHelper()->setParam('group', $this->getRequest()->getParam('group'));
         $this->getDataHelper()->setParam(
             'period',
-            $this->getRequest()->getParam('period')?$this->getRequest()->getParam('period'):'7d'
+            $this->getRequest()->getParam('period') ? $this->getRequest()->getParam('period') : '7d'
         );
 		// initialize the chart
         $this->setDataRows('users');

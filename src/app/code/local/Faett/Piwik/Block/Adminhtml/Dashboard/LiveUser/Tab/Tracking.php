@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Faett_Piwik_Block_Adminhtml_Dashboard_Tab_Live_User
+ * Faett_Piwik_Block_Adminhtml_Dashboard_LiveUser_Tab_Tracking
  *
  * NOTICE OF LICENSE
  * 
@@ -40,7 +41,7 @@
  * 				GNU General Public License (GPL 3)
  * @author      Tim Wagner <tw@faett.net>
  */
-class Faett_Piwik_Block_Adminhtml_Dashboard_Tab_Live_User 
+class Faett_Piwik_Block_Adminhtml_Dashboard_LiveUser_Tab_Tracking 
 	extends Mage_Adminhtml_Block_Dashboard_Grid {
 
 	/**
