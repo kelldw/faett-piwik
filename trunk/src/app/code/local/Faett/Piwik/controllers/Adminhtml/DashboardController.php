@@ -31,9 +31,6 @@
  * 			    GNU General Public License (GPL 3)
  */
 
-require_once 'Mage/Adminhtml/controllers/DashboardController.php';
-require_once 'Faett/Manager/controllers/Adminhtml/AbstractController.php';
-
 /**
  * Controller for the admin Dashboard.
  *
@@ -45,36 +42,7 @@ require_once 'Faett/Manager/controllers/Adminhtml/AbstractController.php';
  * @author      Tim Wagner <tw@faett.net>
  */
 class Faett_Piwik_Adminhtml_DashboardController  
-	extends Faett_Manager_Adminhtml_AbstractController {
-
-	/**
-	 * The idenitifier for handling the serialz
-	 * @var string
-	 */
-    protected $_identifier = 'faett/Faett_Piwik';
-
-	/**
-	 * Returns the unique package identifier containing
-	 * the channels alias and the package name.
-	 *
-	 * @return string The unique Package identifier
-	 */
-	protected function _getIdentifier()
-	{
-	    return $this->_identifier;
-	}
-
-    /**
-     * Details package information with Name, Channel and Serialz.
-     *
-     * @return Faett_Manager_Package_Interfaces_Information
-     */
-    protected function _getPackageInformation()
-    {
-        return Faett_Manager_Package_Information_Default::create()->init(
-            $this->_getIdentifier()
-        );
-    }
+	extends Mage_Adminhtml_Controller_Action {
     
     /**
      * (non-PHPdoc)

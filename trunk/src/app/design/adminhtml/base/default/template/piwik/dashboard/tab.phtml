@@ -1,9 +1,13 @@
-<div id="piwik_tab" style="display:none;">
-<li>
-	<a class="tab-item-link" title="Tracking" id="diagram_tab_tracking" href="#">
-		<span><span title="The information in this tab has been changed." class="changed"></span><span title="This tab contains invalid data. Please solve the problem before saving." class="error"></span>Tracking</span>
-	</a>        
-</li>
+<?php if ($this->isActive()) { ?><div id="piwik_tab" style="display:none;">
+	<li>
+		<a class="tab-item-link" title="Tracking" id="diagram_tab_tracking" href="#">
+			<span>
+				<span title="The information in this tab has been changed." class="changed"></span>
+				<span title="This tab contains invalid data. Please solve the problem before saving." class="error"></span>
+				Tracking
+			</span>
+		</a>        
+	</li>
 </div>
 
 <div id="piwik_content" style="display:none;">
@@ -52,4 +56,4 @@ function changeTrackingPeriod(periodObj) {
     });
 }
 
-</script>
+</script><?php } ?>

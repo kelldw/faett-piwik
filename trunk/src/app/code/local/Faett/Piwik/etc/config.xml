@@ -145,9 +145,9 @@
         </translate>
         <layout>
 			<updates>
-				<vendor>
+				<piwik>
 					<file>piwik.xml</file>
-				</vendor>
+				</piwik>
 			</updates>
 		</layout>
     </adminhtml>
