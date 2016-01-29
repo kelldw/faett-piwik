@@ -1,0 +1,1 @@
+This extension provides functionality for tracking Magento with the Open Source tracking tool Piwik. Faett\_Piwik also replaces the Google Charts with a internal PHPlot rendering engine for chart generation. So no order or amount data will be sent to google for rending the charts any more.
